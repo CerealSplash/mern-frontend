@@ -20,7 +20,7 @@ import "./styles/main.css"
 export const Home = () => {
   const { posts, deleteOnePost } = useContext(context);
 
-  console.log(posts);
+  console.log(import.meta.env.VITE_URI_API);
 
   const confirmDelete = (post) => {
     toast(

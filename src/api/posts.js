@@ -2,7 +2,7 @@ import axios from 'axios'
 import { Form } from 'formik';
 
 export const getAllPosts = async ()=>{
-    const res = await axios.get("http://localhost:3000/posts");
+    const res = await axios.get(`${import.meta.env.VITE_URI_API}/posts`);
 
     return res
 }
@@ -17,14 +17,14 @@ export const createPost = async (toSend)=> {
         form.append(key, toSend[key])
     }
 
-    return await axios.post("http://localhost:3000/posts", form, {
+    return await axios.post(`${import.meta.env.VITE_URI_API}/posts`, form, {
         headers:{
             "Content-Type": "multipart/form-data"
         }
     })
 }
 
-export const deletePost = async (id) => await axios.delete(`http://localhost:3000/posts/${id}`)
+export const deletePost = async (id) => await axios.delete(`${import.meta.env.VITE_URI_API}/posts/${id}`)
 
 export const updatePost = async (id, values)=> {
     
@@ -35,7 +35,7 @@ export const updatePost = async (id, values)=> {
         form.append(key, values[key])
     }
 
-    return await axios.put(`http://localhost:3000/posts/${id}`, form)
+    return await axios.put(`${import.meta.env.VITE_URI_API}/posts/${id}`, form)
 }
 
-export const getOnePost = async (id) => await axios.get(`http://localhost:3000/posts/${id}`)
+export const getOnePost = async (id) => await axios.get(`${import.meta.env.VITE_URI_API}/posts/${id}`)
